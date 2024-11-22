@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 )
@@ -28,5 +29,5 @@ func main() {
 		log.Fatalf("Failed to initialize local repo: %v\n", err)
 	}
 
-  log.Println("🎉 PoC repository setup completed successfully.")
+  fmt.Println("🎉 PoC repository setup completed successfully.")
 }
