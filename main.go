@@ -28,5 +28,5 @@ func main() {
 		log.Fatalf("Failed to initialize local repo: %v\n", err)
 	}
 
-	log.Println("PoC repository setup completed successfully.")
+  log.Println("🎉 PoC repository setup completed successfully.")
 }

@@ -25,7 +25,7 @@ func initLocalRepo(repoName, license, orgName, remoteURL, targetDir string) erro
 		if err := os.Chdir(absDir); err != nil {
 			return fmt.Errorf("failed to change directory: %w", err)
 		}
-		fmt.Printf("Switched to directory: %s\n", absDir)
+    fmt.Printf("🔀 Switched to directory: %s\n", absDir)
 	}
 
 	// リモートURLの設定
@@ -36,9 +36,9 @@ func initLocalRepo(repoName, license, orgName, remoteURL, targetDir string) erro
 	// カレントディレクトリをリポジトリ化
 	repo, err := git.PlainInit(".", false)
 	if err != nil {
-		return fmt.Errorf("failed to initialize repository in current directory: %w", err)
+    return fmt.Errorf("💥 failed to initialize repository in current directory: %w", err)
 	}
-	fmt.Println("Initialized empty Git repository in the current directory")
+  fmt.Println("💥 Initialized empty Git repository in the current directory")
 
 	// ファイル作成（READMEとLICENSE）
 	err = os.WriteFile("README.md", []byte("# "+repoName), 0644)
@@ -69,8 +69,8 @@ func initLocalRepo(repoName, license, orgName, remoteURL, targetDir string) erro
 	// 初期コミット
 	_, err = worktree.Commit("Initial commit", &git.CommitOptions{
 		Author: &object.Signature{
-			Name:  "Your Name",
-			Email: "your.email@example.com",
+			Name:  "rca",
+			Email: "nem@nem.x0.to",
 			When:  time.Now(),
 		},
 	})
@@ -104,6 +104,6 @@ func initLocalRepo(repoName, license, orgName, remoteURL, targetDir string) erro
 		return fmt.Errorf("failed to push: %w", err)
 	}
 
-	fmt.Println("Local repository initialized and pushed successfully.")
+  fmt.Println("✅ Repository setup completed and pushed to remote")
 	return nil
 }
