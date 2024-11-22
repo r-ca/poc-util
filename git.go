@@ -38,7 +38,7 @@ func initLocalRepo(repoName, license, orgName, remoteURL, targetDir string) erro
 	if err != nil {
     return fmt.Errorf("💥 failed to initialize repository in current directory: %w", err)
 	}
-  fmt.Println("💥 Initialized empty Git repository in the current directory")
+  fmt.Println("✅ Initialized empty Git repository in the current directory")
 
 	// ファイル作成（READMEとLICENSE）
 	err = os.WriteFile("README.md", []byte("# "+repoName), 0644)
