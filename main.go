@@ -7,7 +7,7 @@ import (
 
 func main() {
 	// 引数処理
-	repoName, license := parseCLIArgs()
+	repoName, license, remoteURL, targetDir := parseCLIArgs()
 
 	// 環境変数から組織名とトークンを取得
 	orgName := os.Getenv("GITHUB_ORG")
@@ -23,7 +23,7 @@ func main() {
 	}
 
 	// ローカルリポジトリ作成
-	err = initLocalRepo(repoName, license, orgName)
+	err = initLocalRepo(repoName, license, orgName, remoteURL, targetDir)
 	if err != nil {
 		log.Fatalf("Failed to initialize local repo: %v\n", err)
 	}
