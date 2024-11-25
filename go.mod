@@ -1,6 +1,6 @@
 module me.r0m.poc-util
 
-go 1.22.6
+go 1.22
 
 require (
 	github.com/go-git/go-git/v5 v5.12.0
