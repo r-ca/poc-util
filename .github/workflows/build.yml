@@ -1,0 +1,42 @@
+name: Go Cross-Platform Build Workflow
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # リポジトリのコードをチェックアウト
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Goをセットアップ
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.20"
+
+      # クロスプラットフォームビルド
+      - name: Cross-platform Build
+        run: |
+          mkdir -p output
+          # Linux用バイナリ
+          GOOS=linux GOARCH=amd64 go build -o output/poc-util-linux-amd64 main.go
+          # macOS (amd64) 用バイナリ
+          GOOS=darwin GOARCH=amd64 go build -o output/poc-util-macos-amd64 main.go
+          # macOS (arm64) 用バイナリ
+          GOOS=darwin GOARCH=arm64 go build -o output/poc-util-macos-arm64 main.go
+          # Windows用バイナリ
+          GOOS=windows GOARCH=amd64 go build -o output/poc-util-windows-amd64.exe main.go
+
+      # ビルド成果物のアップロード
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: poc-util-builds
+          path: output/
