@@ -26,13 +26,13 @@ jobs:
         run: |
           mkdir -p output
           # Linux用バイナリ
-          GOOS=linux GOARCH=amd64 go build -o output/poc-util-linux-amd64 main.go
+          GOOS=linux GOARCH=amd64 go build -o output/poc-util-linux-amd64 .
           # macOS (amd64) 用バイナリ
-          GOOS=darwin GOARCH=amd64 go build -o output/poc-util-macos-amd64 main.go
+          GOOS=darwin GOARCH=amd64 go build -o output/poc-util-macos-amd64 .
           # macOS (arm64) 用バイナリ
-          GOOS=darwin GOARCH=arm64 go build -o output/poc-util-macos-arm64 main.go
+          GOOS=darwin GOARCH=arm64 go build -o output/poc-util-macos-arm64 .
           # Windows用バイナリ
-          GOOS=windows GOARCH=amd64 go build -o output/poc-util-windows-amd64.exe main.go
+          GOOS=windows GOARCH=amd64 go build -o output/poc-util-windows-amd64.exe .
 
       # ビルド成果物のアップロード
       - name: Upload Build Artifacts
